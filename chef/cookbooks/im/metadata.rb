@@ -1,6 +1,12 @@
-Im Cookbook
-===========
+name             'im'
+maintainer       'IBM Corp'
+maintainer_email ''
+license          'Copyright IBM Corp. 2016, 2017'
+provides         'im'
+depends          'ibm_cloud_utils'
+supports         'rhel', '>= 7.0'
 
+description <<-EOH
 ## DESCRIPTION
 This cookbook provides a lightweight resource/provider (LWRP) that can be used to install IBM Installation Manager (IM) and IBM products using the IBM Installation Manager.
 ## Versions
@@ -288,83 +294,34 @@ Response file template:
 <preference name='com.ibm.cic.agent.ui.displayInternalVersion' value='false'/>
 <preference name='com.ibm.cic.common.core.preferences.eclipseCache' value='<%= @IMSHARED %>'/>
 ```
+EOH
+version '0.1.19'
 
-
-Requirements
-------------
-
-### Platform:
-
-* Rhel (>= 7.0)
-
-### Cookbooks:
-
-* ibm_cloud_utils
-
-Attributes
-----------
-
-*No attributes defined*
-
-Recipes
--------
-
-### im::cleanup.rb
-
-
+recipe 'im::cleanup.rb', '
 Cleanup recipe ( cleanup.rb )
 This recipe will delete temp directory where installers were copied as they are not required any further.
-
-
-### im::default.rb
-
-
+'
+recipe 'im::default.rb', '
 Default recipe (default.rb)
 The default recipe for the cookbook. It is recommended to not use the default recipe, but explicitly specify a run_list for the deployment node.
-
-
-### im::environment_check.rb
-
-
+'
+recipe 'im::environment_check.rb', '
 environment_check recipe (environment_check.rb)
 This recipe will test that the external environment is ready to have a cookbook installed
-
-
-### im::fixpack.rb
-
-
+'
+recipe 'im::fixpack.rb', '
 Fixpack recipe (fixpack.rb)
 This recipe performs product fixpack installation.
-
-
-### im::gather_evidence.rb
-
-
+'
+recipe 'im::gather_evidence.rb', '
 Gather evidence recipe (gather_evidence.rb)
 It will create log file mentioning installed application version.
-
-
-### im::install.rb
-
-
+'
+recipe 'im::install.rb', '
 Install  recipe (install.rb)
 Installation recipe, source the version, unpack the file and install product
-
-
-### im::prereq.rb
-
-
+'
+recipe 'im::prereq.rb', '
 Prerequisites recipe (prereq.rb)
 This recipe configures the operating prerequisites for the pattern.
-
-
-
-License and Author
-------------------
-
-Author:: IBM Corp (<>)
-
-Copyright:: 2017, IBM Corp
-
-License:: Copyright IBM Corp. 2016, 2017
-
+'
