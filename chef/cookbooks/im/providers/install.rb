@@ -140,6 +140,12 @@ action :install_im do
       end
 
       # Download and extract binaries
+      case node['platform_family']
+      when 'debian'
+        apt_update 'update' do
+          action :update
+        end
+      end
       package 'unzip'
 
       raise "Package for IM version #{new_resource.version} not included in ['im']['archive_names'] hash in internal.rb file" unless im_archive_names.keys.find { |k| k.include? new_resource.version }

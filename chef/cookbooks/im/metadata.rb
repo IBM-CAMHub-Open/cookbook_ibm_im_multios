@@ -5,6 +5,7 @@ license          'Copyright IBM Corp. 2016, 2017'
 provides         'im'
 depends          'ibm_cloud_utils'
 supports         'rhel', '>= 7.0'
+supports         'ubuntu', '>= 14.04'
 
 description <<-EOH
 ## DESCRIPTION
@@ -26,7 +27,7 @@ Relative to the software repository, the installation files must be stored in th
 The following is a description of files needed on the REPO Server depending on version and architecture.
 ```python
 case node['platform_family']
-when 'rhel'
+when 'rhel' || 'debian'
   case node['kernel']['machine']
   when 'x86_64'
     default['im']['arch'] = 'x86_64'
@@ -295,7 +296,7 @@ Response file template:
 <preference name='com.ibm.cic.common.core.preferences.eclipseCache' value='<%= @IMSHARED %>'/>
 ```
 EOH
-version '0.1.19'
+version '0.1.21'
 
 recipe 'im::cleanup.rb', '
 Cleanup recipe ( cleanup.rb )

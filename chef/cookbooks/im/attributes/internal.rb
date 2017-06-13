@@ -44,7 +44,7 @@ raise "IM version #{node['im']['version']} not supported" unless node['im']['sup
 Chef::Log.info("PASS: IM Version is: #{node['im']['version']}")
 
 case node['platform_family']
-when 'rhel'
+when 'rhel', 'debian'
   case node['kernel']['machine']
   when 'x86_64'
     default['im']['arch'] = 'x86_64'

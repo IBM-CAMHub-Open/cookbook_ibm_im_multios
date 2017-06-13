@@ -11,7 +11,7 @@
 # This will be used only for standalone installation for kitchen tests
 
 case node['platform_family']
-when 'rhel'
+when 'rhel', 'debian'
   node['im']['os_users'].each_pair do |_k, u|
     next if u['ldap_user'] == 'true' || u['name'].nil?
     group u['gid'] do

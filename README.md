@@ -20,7 +20,7 @@ Relative to the software repository, the installation files must be stored in th
 The following is a description of files needed on the REPO Server depending on version and architecture.
 ```python
 case node['platform_family']
-when 'rhel'
+when 'rhel' || 'debian'
   case node['kernel']['machine']
   when 'x86_64'
     default['im']['arch'] = 'x86_64'
@@ -296,6 +296,7 @@ Requirements
 ### Platform:
 
 * Rhel (>= 7.0)
+* Ubuntu (>= 14.04)
 
 ### Cookbooks:
 
