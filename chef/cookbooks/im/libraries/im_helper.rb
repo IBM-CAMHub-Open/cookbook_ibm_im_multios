@@ -103,5 +103,17 @@ module IM
   end
 end
 
+module HandlerSensitiveFiles
+  # Helper module for sensitive files
+  class Helper
+    # Helper module for sensitive files
+    def remove_sensitive_files_on_run_failure
+      FileUtils.rm("/tmp/master_password_file.txt") if ::File.exist?('/tmp/master_password_file.txt')
+      FileUtils.rm("/tmp/credential.store") if ::File.exist?('/tmp/credential.store')
+      Chef::Log.info "Sensitive files removed"
+    end
+  end
+end
+
 Chef::Recipe.send(:include, IM::Helper)
 Chef::Resource.send(:include, IM::Helper)

@@ -253,6 +253,11 @@ end
 
 #Override Load Current Resource
 def load_current_resource
+  Chef.event_handler do
+    on :run_failed do
+      HandlerSensitiveFiles::Helper.new.remove_sensitive_files_on_run_failure
+    end
+  end
   im_install_dir = define_im_install_dir
   im_repo = define_im_repo
   user = define_user
