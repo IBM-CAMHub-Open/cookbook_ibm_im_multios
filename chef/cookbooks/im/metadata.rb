@@ -296,7 +296,7 @@ Response file template:
 <preference name='com.ibm.cic.common.core.preferences.eclipseCache' value='<%= @IMSHARED %>'/>
 ```
 EOH
-version '1.0.0'
+version '1.0.1'
 
 recipe 'im::cleanup.rb', '
 Cleanup recipe ( cleanup.rb )
