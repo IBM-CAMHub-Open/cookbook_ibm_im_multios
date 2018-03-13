@@ -1,6 +1,6 @@
 # libraries/matchers.rb
 #
-# Copyright IBM Corp. 2016, 2016
+# Copyright IBM Corp. 2016, 2018
 #
 # ChefSpec matchers
 # See: Packaging Custom Matchers at: https://github.com/sethvargo/chefspec

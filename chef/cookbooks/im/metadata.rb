@@ -1,7 +1,7 @@
 name             'im'
 maintainer       'IBM Corp'
 maintainer_email ''
-license          'Copyright IBM Corp. 2016, 2017'
+license          'Copyright IBM Corp. 2016, 2018'
 provides         'im'
 depends          'ibm_cloud_utils'
 supports         'rhel', '>= 7.0'

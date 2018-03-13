@@ -2,7 +2,7 @@
 # Cookbook Name:: im
 # Provider:: im_install
 #
-# Copyright IBM Corp. 2016, 2017
+# Copyright IBM Corp. 2016, 2018
 #
 include IM::Helper
 use_inline_resources

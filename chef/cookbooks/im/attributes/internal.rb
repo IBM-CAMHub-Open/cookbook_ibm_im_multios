@@ -1,10 +1,10 @@
 # encoding: UTF-8
 ########################################################
-#	  Copyright IBM Corp. 2012, 2017
+#	  Copyright IBM Corp. 2012, 2018
 ########################################################
 #
 # <> Installation Manager Version Number to be installed. Supported versions: 1.8.5
-default['im']['version'] = '1.8.6'
+default['im']['version'] = '1.8.8'
 # <> Installation Manager Mode, Admin / NonAdmin / Group
 default['im']['install_mode'] = ''
 
@@ -31,13 +31,13 @@ force_override['im']['sw_repo_path'] = '/im/v1x/base'
 default['im']['fixpack_offering_id'] = 'com.ibm.cic.agent'
 
 
-force_override['im']['supported_versions'] = ['1.8.5', '1.8.6']
+force_override['im']['supported_versions'] = ['1.8.5', '1.8.6', '1.8.8']
 
 Chef::Log.info("Checking supported IM version")
 raise "IM version #{node['im']['version']} not supported" unless node['im']['supported_versions'].include? node['im']['version']
 Chef::Log.info("PASS: IM Version is: #{node['im']['version']}")
 
-force_override['im']['supported_versions'] = ['1.8.5', '1.8.6']
+force_override['im']['supported_versions'] = ['1.8.5', '1.8.6', '1.8.8']
 
 Chef::Log.info("Checking supported IM version")
 raise "IM version #{node['im']['version']} not supported" unless node['im']['supported_versions'].include? node['im']['version']
@@ -48,16 +48,18 @@ when 'rhel', 'debian'
   case node['kernel']['machine']
   when 'x86_64'
     default['im']['arch'] = 'x86_64'
-    # <> Installation Manager Version 1.8.5, 1.8.6
+    # <> Installation Manager Version 1.8.5, 1.8.6, 1.8.8
     force_override['im']['archive_names'] =
       { '1.8.5' => { 'filename' => 'agent.installer.linux.gtk.' + node['im']['arch'] + '_1.8.5000.20160506_1125.zip',
                      'sha256' => '76190adf69f6e4a6a8d7432983f5aebe68d56545a3a13b3ecd6b25c12d433b04' },
         '1.8.6' => { 'filename' => 'agent.installer.linux.gtk.' + node['im']['arch'] + '_1.8.6000.20161118_1611.zip',
-                     'sha256' => 'b253a06bccace5934b108632487182f6a6f659082fea69372242b9865a64e4f3' } }
+                     'sha256' => 'b253a06bccace5934b108632487182f6a6f659082fea69372242b9865a64e4f3' },
+        '1.8.8' => { 'filename' => 'agent.installer.linux.gtk.' + node['im']['arch'] + '_1.8.8000.20171130_1105.zip',
+                     'sha256' => '272f1ca65dcf502ad72268e6852c9922551714b8ce53c78e054764243d832a78' } }
   end
   # <> An absolute path to a directory that will be used to hold any temporary files created as part of the automation
   default['ibm']['temp_dir'] = '/tmp/ibm_cloud'
-  # <> An absolute path to a directory that will be used to hold any persistent files created as part of the automation
+  # <> An absolute path to a directory that will be used to hold any persistent files created as part 
   default['ibm']['log_dir'] = '/var/log/ibm_cloud'
   # <> A temporary directory used for the extraction of installation files
   default['ibm']['expand_area'] = node['ibm']['temp_dir'] + '/expand_area'

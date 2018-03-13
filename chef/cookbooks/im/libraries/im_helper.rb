@@ -1,7 +1,7 @@
 # Cookbook Name:: im
 # Library:: im_helper
 #
-# Copyright IBM Corp. 2016, 2017
+# Copyright IBM Corp. 2016, 2018
 #
 # <> library: IM helper
 # <> Library Functions for the IM Cookbook
