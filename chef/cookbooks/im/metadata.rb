@@ -2,9 +2,12 @@ name             'im'
 maintainer       'IBM Corp'
 maintainer_email ''
 license          'Copyright IBM Corp. 2016, 2018'
+issues_url   'https://github.com/IBM-CAMHub-Open/cookbook_ibm_im_multios/issues'
+source_url   'https://github.com/IBM-CAMHub-Open/cookbook_ibm_im_multios'
+chef_version '>= 12.5' if respond_to?(:chef_version)
 provides         'im'
 depends          'ibm_cloud_utils'
-supports         'rhel', '>= 7.0'
+supports         'redhat', '>= 7.0'
 supports         'ubuntu', '>= 14.04'
 
 description <<-EOH
@@ -296,7 +299,7 @@ Response file template:
 <preference name='com.ibm.cic.common.core.preferences.eclipseCache' value='<%= @IMSHARED %>'/>
 ```
 EOH
-version '1.0.2'
+version '2.0.0'
 
 recipe 'im::cleanup.rb', '
 Cleanup recipe ( cleanup.rb )

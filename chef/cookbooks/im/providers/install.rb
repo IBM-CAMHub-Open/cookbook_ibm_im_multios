@@ -5,7 +5,7 @@
 # Copyright IBM Corp. 2016, 2018
 #
 include IM::Helper
-use_inline_resources
+# use_inline_resources
 
 action :install do
   if @current_resource.installed
@@ -268,7 +268,8 @@ def load_current_resource
   end
   security_params = define_security_params
 
-  @current_resource = Chef::Resource::ImInstall.new(@new_resource.name)
+  # CHEF12 @current_resource = Chef::Resource::ImInstall.new(@new_resource.name)
+  @current_resource = Chef::Resource.resource_for_node(:im_install, node).new(@new_resource.name)
   #A common step is to load the current_resource instance variables with what is established in the new_resource.
   #What is passed into new_resouce via our recipes, is not automatically passed to our current_resource.
   @current_resource.user(user)

@@ -295,7 +295,7 @@ Requirements
 
 ### Platform:
 
-* Rhel (>= 7.0)
+* Redhat (>= 7.0)
 * Ubuntu (>= 14.04)
 
 ### Cookbooks:
