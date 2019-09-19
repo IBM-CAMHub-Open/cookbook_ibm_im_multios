@@ -4,7 +4,7 @@ Im Cookbook
 ## DESCRIPTION
 This cookbook provides a lightweight resource/provider (LWRP) that can be used to install IBM Installation Manager (IM) and IBM products using the IBM Installation Manager.
 ## Versions
-* IBM IM V1.8.5, V1.8.6
+* IBM IM V1.8.5, V1.8.6, V1.8.8, V1.9.0
 ## Use Cases
 * IM installation
 * IM upgrade to the latest IM version included in IM repository.
@@ -24,12 +24,16 @@ when 'rhel' || 'debian'
   case node['kernel']['machine']
   when 'x86_64'
     default['im']['arch'] = 'x86_64'
-    # <> Installation Manager Version 1.8.5, 1.8.6
+    # <> Installation Manager Version 1.8.5, 1.8.6, 1.8.8, 1.9.0
     force_override['im']['archive_names'] =
     { '1.8.5' => { 'filename' => 'agent.installer.linux.gtk.' + node['im']['arch'] + '_1.8.5000.20160506_1125.zip',
                    'sha256' => '76190adf69f6e4a6a8d7432983f5aebe68d56545a3a13b3ecd6b25c12d433b04' },
       '1.8.6' => { 'filename' => 'agent.installer.linux.gtk.' + node['im']['arch'] + '_1.8.6000.20161118_1611.zip',
-                   'sha256' => 'b253a06bccace5934b108632487182f6a6f659082fea69372242b9865a64e4f3' } }
+                   'sha256' => 'b253a06bccace5934b108632487182f6a6f659082fea69372242b9865a64e4f3' },
+      '1.8.8' => { 'filename' => 'agent.installer.linux.gtk.' + node['im']['arch'] + '_1.8.8000.20171130_1105.zip',
+                   'sha256' => '272f1ca65dcf502ad72268e6852c9922551714b8ce53c78e054764243d832a78' },
+      '1.9.0' => { 'filename' => 'agent.installer.linux.gtk.' + node['im']['arch'] + '_1.9.0.20190715_0328.zip',
+                   'sha256' => 'd8779094e9bc1ebcb4e60d142bf32f13cbe3c72e758f3bb72ac108200af2e0a5' } }
   end
 ```
 # Resources
@@ -154,7 +158,7 @@ Installs IBM Installation Manager. Installs an IBM product by executing the IBM 
   </tr>
   <tr>
     <td><code>version</code></td>
-    <td>Installation Manager Version Number to be installed. Supported versions: 1.8.5, 1.8.6</td>
+    <td>Installation Manager Version Number to be installed. Supported versions: 1.8.5, 1.8.6, 1.8.8, 1.9.0</td>
     <td><code>node['im']['version']</code></td>
   </tr>
   <tr>
@@ -365,7 +369,7 @@ License and Author
 
 Author:: IBM Corp (<>)
 
-Copyright:: 2018, IBM Corp
+Copyright:: 2019, IBM Corp
 
-License:: Copyright IBM Corp. 2016, 2018
+License:: Copyright IBM Corp. 2016, 2019
 
